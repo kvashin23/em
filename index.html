@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пасты и начинки ЕМ! — для кондитеров и шеф-поваров | Орехпром</title>
+<meta name="description" content="Ореховые, шоколадные и фруктовые начинки бренда «ЕМ!» в формате 1 кг — для кондитерских, кофеен и авторских десертов. Профессиональное качество в розницу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F3F1;
+    --panel:#EBE9E4;
+    --ink:#1C1C1A;
+    --ink-70: rgba(28,28,26,.70);
+    --ink-55: rgba(28,28,26,.55);
+    --line: rgba(28,28,26,.14);
+    --line-soft: rgba(28,28,26,.08);
+    --white:#fff;
+    --accent:#6E7A4E; /* muted olive pulled from packaging greens, used sparingly */
+    --font-sans: 'Onest', Helvetica, Arial, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --container: 1240px;
+    --gap: 24px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-sans);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,video{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:var(--container); margin:0 auto; padding:0 32px;}
+  @media (max-width:720px){ .wrap{padding:0 20px;} }
+
+  .eyebrow{
+    text-transform:uppercase; font-size:13px; font-weight:600; letter-spacing:.08em;
+    color:var(--ink-55);
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--ink); color:var(--white); border:1px solid var(--ink);
+    padding:13px 26px; font-size:14px; font-weight:600; border-radius:0;
+    white-space:nowrap; transition:background .2s ease, color .2s ease, opacity .2s ease;
+  }
+  .btn:hover{background:#3a3a36;}
+  .btn.btn-outline{background:transparent; color:var(--ink);}
+  .btn.btn-outline:hover{background:var(--ink); color:var(--white);}
+  .btn.btn-disabled{background:transparent; color:var(--ink-55); border-color:var(--line); cursor:default;}
+  .btn.btn-disabled:hover{background:transparent;}
+
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0; gap:24px;
+  }
+  .logo{
+    font-family:var(--font-serif); font-weight:900; font-size:22px; letter-spacing:.01em;
+  }
+  nav.main-nav{display:flex; gap:28px; flex-wrap:wrap;}
+  nav.main-nav a{font-size:15px; font-weight:500; color:var(--ink-70);}
+  nav.main-nav a:hover{color:var(--ink);}
+  .header-cta{display:flex; align-items:center; gap:14px;}
+  .lang-pill{display:flex; border:1px solid var(--line); font-size:13px; font-weight:600;}
+  .lang-pill span{padding:6px 12px;}
+  .lang-pill span.active{background:var(--ink); color:var(--white);}
+  .burger{display:none;}
+  @media (max-width: 980px){
+    nav.main-nav{display:none;}
+    .burger{display:block; width:34px; height:34px; border:1px solid var(--line); background:none; flex:none;}
+  }
+  @media (max-width: 560px){
+    .header-row{padding:16px 0; gap:12px;}
+    .lang-pill{display:none;}
+    .header-cta{gap:10px;}
+    .header-cta .btn{padding:11px 16px; font-size:13px;}
+  }
+
+  .breadcrumb{
+    padding:14px 0; font-size:13px; color:var(--ink-55); display:flex; gap:8px; flex-wrap:wrap;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .breadcrumb a{color:var(--ink-55);}
+  .breadcrumb a:hover{color:var(--ink);}
+  .breadcrumb .sep{opacity:.5;}
+  .breadcrumb .current{color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 72px;}
+  .hero-grid{
+    display:grid; grid-template-columns: 1.05fr .95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:940px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
+  .hero h1{
+    font-size:56px; font-weight:700; line-height:1.02; letter-spacing:-1.2px; margin:14px 0 24px;
+  }
+  @media (max-width:940px){ .hero h1{font-size:38px;} }
+  .hero .lead{font-size:19px; font-weight:500; color:var(--ink); margin:0 0 18px;}
+  .hero p.body{font-size:16px; color:var(--ink-70); margin:0 0 14px; max-width:52ch;}
+  .hero-actions{display:flex; align-items:center; gap:18px; margin-top:28px; flex-wrap:wrap;}
+  .hero-actions .note{font-size:13px; color:var(--ink-55); max-width:220px;}
+
+  .hero-visual{position:relative; min-height:560px;}
+  @media (max-width:940px){ .hero-visual{min-height:420px; margin-top:8px;} }
+  @media (max-width:560px){ .hero-visual{min-height:320px;} }
+  .hero-jar{
+    position:absolute; will-change:transform; transform-origin:center;
+    animation:jarFloat var(--dur,7s) ease-in-out infinite;
+    animation-delay:var(--delay,0s);
+  }
+  .hero-jar img{
+    width:100%; display:block;
+    filter:drop-shadow(0 22px 26px rgba(28,28,26,.20));
+  }
+  @keyframes jarFloat{
+    0%,100%{ transform:translateY(0) rotate(var(--rot,0deg)); }
+    50%{ transform:translateY(-14px) rotate(var(--rot,0deg)); }
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-jar{animation:none;} }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{padding:88px 0;}
+  @media (max-width:720px){ section{padding:56px 0;} }
+  .section-head{margin-bottom:48px;}
+  .section-head h2{font-size:44px; font-weight:700; letter-spacing:-1px; margin:12px 0 0;}
+  @media (max-width:720px){ .section-head h2{font-size:30px;} }
+  .section-head .sub{font-size:17px; color:var(--ink-70); margin-top:14px; max-width:56ch;}
+
+  /* ---------- WHY / STICKY SCROLL ---------- */
+  .why{background:var(--panel);}
+  .why-scroller{position:relative;}
+  .why-track{}
+  .why-step{min-height:64vh; display:flex; align-items:center;}
+  @media (max-width:820px){ .why-step{min-height:0; padding:0 0 40px;} }
+  .why-sticky{
+    position:sticky; top:96px; display:grid; grid-template-columns:.62fr .38fr; gap:64px; align-items:center;
+  }
+  @media (max-width:820px){
+    .why-sticky{position:static; display:block;}
+    .why-copy, .why-track{display:none;}
+    .why-list{border-top:none;}
+  }
+
+  .why-copy .idx{font-family:var(--font-serif); font-size:20px; color:var(--ink-55); margin-bottom:14px;}
+  .why-copy h3{font-size:38px; font-weight:700; letter-spacing:-.6px; margin:0 0 18px; line-height:1.08;}
+  @media (max-width:720px){ .why-copy h3{font-size:26px;} }
+  .why-copy p{font-size:17px; color:var(--ink-70); max-width:46ch; margin:0;}
+
+  .why-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .why-list button{
+    all:unset; cursor:pointer; padding:20px 0; border-bottom:1px solid var(--line);
+    display:flex; flex-direction:column; gap:6px; transition:opacity .25s ease;
+    opacity:.45;
+  }
+  .why-list button.active{opacity:1;}
+  .why-list button .t{font-size:17px; font-weight:600;}
+  .why-list button .d{font-size:14px; color:var(--ink-55); max-width:38ch;}
+  @media (max-width:820px){ .why-list button{opacity:1;} }
+
+  .why-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    margin-top:56px; padding-top:40px; border-top:1px solid var(--line);
+  }
+  .why-cta p{font-size:16px; color:var(--ink-70); max-width:44ch; margin:0;}
+
+  /* ---------- CATALOG / TABS ---------- */
+  .catalog-tabs{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:48px;}
+  .catalog-tabs button{
+    all:unset; cursor:pointer; padding:11px 20px; font-size:14px; font-weight:600;
+    border:1px solid var(--ink); color:var(--ink); background:transparent; position:relative;
+  }
+  .catalog-tabs button.active{background:var(--ink); color:#fff;}
+  .catalog-tabs button .soon{
+    display:inline-block; margin-left:8px; font-size:10px; font-weight:700; letter-spacing:.03em;
+    background:rgba(28,28,26,.10); color:var(--ink-70); padding:2px 6px; vertical-align:middle;
+  }
+  .catalog-tabs button.active .soon{background:rgba(255,255,255,.22); color:#fff;}
+
+  .flavor-panel{display:none;}
+  .flavor-panel.active{display:grid; grid-template-columns:.86fr 1.14fr; gap:56px; align-items:start;}
+  @media (max-width:940px){ .flavor-panel.active{grid-template-columns:1fr; gap:32px;} }
+
+  .flavor-info .kicker{font-size:13px; font-weight:600; color:var(--ink-55); text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px;}
+  .flavor-info h3{font-size:32px; font-weight:700; letter-spacing:-.5px; margin:0 0 16px; line-height:1.1;}
+  .flavor-info p{font-size:16px; color:var(--ink-70); margin:0 0 28px; max-width:46ch;}
+  .flavor-info .soon-note{font-size:13px; color:var(--ink-55); margin-top:10px;}
+
+  .flavor-gallery{display:flex; gap:14px; align-items:stretch;}
+  .fg-primary{flex:1.05; aspect-ratio:3/4; overflow:hidden; background:var(--panel);}
+  .fg-primary img, .fg-primary video{width:100%; height:100%; object-fit:cover;}
+  .fg-side{flex:1; display:flex; flex-direction:column; gap:14px;}
+  .fg-side .cell{flex:1; min-height:0; overflow:hidden; background:var(--panel);}
+  .fg-side .cell img{width:100%; height:100%; object-fit:cover;}
+  @media (max-width:640px){
+    .flavor-gallery{flex-direction:column;}
+    .fg-primary{aspect-ratio:4/3;}
+    .fg-side{flex-direction:row;}
+    .fg-side .cell{aspect-ratio:1/1;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    all:unset; box-sizing:border-box; width:100%; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    padding:28px 0; font-size:19px; font-weight:600;
+  }
+  @media (max-width:640px){ .faq-q{font-size:16px; padding:20px 0;} }
+  .faq-q .q-text{max-width:60%;}
+  @media (max-width:720px){ .faq-q .q-text{max-width:78%;} }
+  .faq-q .q-meta{display:flex; align-items:center; gap:16px; flex:none;}
+  .faq-q .q-label{
+    font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-55);
+    white-space:nowrap;
+  }
+  @media (max-width:720px){ .faq-q .q-label{display:none;} }
+  .faq-q .q-circle{
+    flex:none; width:42px; height:42px; border-radius:50%; border:1px solid var(--line); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; transition:background .25s ease, border-color .25s ease, color .25s ease;
+  }
+  .faq-q .q-circle svg{width:14px; height:14px; transition:transform .3s ease; display:block;}
+  .faq-item.open .q-circle{background:var(--ink); border-color:var(--ink); color:#fff;}
+  .faq-item.open .q-circle svg{transform:rotate(180deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .faq-a p{margin:0 0 28px; padding-left:0; font-size:16px; color:var(--ink-70); max-width:70ch;}
+  @media (min-width:721px){ .faq-a p{padding-left:46%; max-width:none;} }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews{background:var(--panel); overflow:hidden;}
+  .review-stats{display:flex; gap:56px; flex-wrap:wrap; margin:40px 0 48px;}
+  .review-stats .stat b{display:block; font-family:var(--font-serif); font-size:40px; font-weight:900;}
+  .review-stats .stat span{font-size:13px; color:var(--ink-55); text-transform:uppercase; letter-spacing:.05em;}
+
+  .marquee{position:relative; width:100%;}
+  .marquee-track{display:flex; gap:20px; width:max-content; animation:scroll-left 62s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .review-card{
+    position:relative; overflow:hidden;
+    flex:none; width:340px; background:var(--bg); padding:38px 28px 28px;
+    display:flex; flex-direction:column; gap:18px;
+    border-top:1px solid var(--line);
+  }
+  .review-card .quote-mark{
+    position:absolute; top:-18px; left:16px; z-index:0;
+    font-family:var(--font-serif); font-weight:900; font-size:130px; line-height:1;
+    color:rgba(28,28,26,.07); pointer-events:none;
+  }
+  .review-card p{position:relative; z-index:1; font-size:15px; color:var(--ink); margin:0; flex:1;}
+  .review-card .name{position:relative; z-index:1; font-size:13px; font-weight:600; color:var(--ink-55);}
+
+  .reviews-foot{display:flex; justify-content:center; margin-top:48px;}
+
+  /* ---------- FOOTER ---------- */
+  footer.site{padding:72px 0 32px; border-top:1px solid var(--line);}
+  .footer-top{display:grid; grid-template-columns:1.3fr .7fr 1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid var(--line);}
+  @media (max-width:820px){ .footer-top{grid-template-columns:1fr; gap:32px;} }
+  .footer-top .logo{margin-bottom:10px;}
+  .footer-top .tag{font-size:14px; color:var(--ink-70); max-width:32ch;}
+  .footer-nav{display:flex; flex-direction:column; gap:12px;}
+  .footer-nav a{font-size:14px; color:var(--ink-70);}
+  .footer-nav a:hover{color:var(--ink);}
+  .footer-contacts div{font-size:14px; color:var(--ink-70); margin-bottom:8px;}
+  .footer-bottom{display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-top:24px; font-size:13px; color:var(--ink-55);}
+  .footer-bottom .links{display:flex; gap:20px; flex-wrap:wrap;}
+  .footer-bottom a{color:var(--ink-55);}
+  .footer-bottom a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap header-row">
+    <a href="/" class="logo">ОРЕХПРОМ</a>
+    <nav class="main-nav">
+      <a href="/#why">О компании</a>
+      <a href="/#offer">R&amp;D</a>
+      <a href="/#audience">B2B</a>
+      <a href="/#offer">Бренды</a>
+      <a href="/#news">Рецепты</a>
+      <a href="/#news">Блог</a>
+    </nav>
+    <div class="header-cta">
+      <div class="lang-pill"><span class="active">Ru</span><span>En</span></div>
+      <a href="https://www.ozon.ru/seller/ao-orehprom/" target="_blank" rel="noopener" class="btn">Интернет-магазин</a>
+      <button class="burger" aria-label="Меню">☰</button>
+    </div>
+  </div>
+  <div class="wrap breadcrumb">
+    <a href="/">Главная</a><span class="sep">→</span>
+    <a href="/#offer">Бренды</a><span class="sep">→</span>
+    <a href="/brands/em/">Ем!</a><span class="sep">→</span>
+    <span class="current">Пасты и начинки</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">бренд «ЕМ!» · формат 1 кг</div>
+        <h1>Пасты и начинки для кондитеров и шеф-поваров</h1>
+        <p class="lead">Профессиональное качество в удобном формате 1 кг — для кондитерских, кофеен, домашних десертов и авторских рецептов.</p>
+        <p class="body">Создавайте десерты с насыщенным вкусом, стабильной текстурой и красивой подачей без сложных технологических процессов.</p>
+        <p class="body">Ореховые, шоколадные и фруктовые начинки бренда «ЕМ!» разработаны для профессионального использования, но доступны каждому. Ведь теперь любимые ингредиенты можно купить в розницу.</p>
+        <div class="hero-actions">
+          <a href="https://www.ozon.ru/seller/ao-orehprom/" target="_blank" rel="noopener" class="btn">Перейти в магазин</a>
+          <span class="note">Доставка по всей России, в удобный ПВЗ</span>
+        </div>
+      </div>
+      <div class="hero-visual" id="heroVisual">
+        <!-- jars injected by JS from HERO_JARS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">почему выбирают</div>
+        <h2>Почему многие кондитеры и шеф-повара выбирают нашу продукцию</h2>
+      </div>
+
+      <div class="why-scroller" id="whyScroller">
+        <div class="why-sticky">
+          <div class="why-copy" id="whyCopy">
+            <!-- injected -->
+          </div>
+          <div class="why-list" id="whyList">
+            <!-- injected -->
+          </div>
+        </div>
+        <div class="why-track" id="whyTrack">
+          <!-- injected trigger steps -->
+        </div>
+      </div>
+
+      <div class="why-cta">
+        <a href="https://www.ozon.ru/seller/ao-orehprom/" target="_blank" rel="noopener" class="btn">Перейти на OZON</a>
+        <p>Закажите понравившийся вкус прямо сейчас с быстрой доставкой по всей России</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG -->
+  <section class="catalog" id="catalog">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">каталог продукции</div>
+        <h2>Разнообразие вкусов</h2>
+      </div>
+
+      <div class="catalog-tabs" id="catalogTabs"></div>
+      <div id="catalogPanels"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">вопрос – ответ</div>
+        <h2>Отвечаем на вопросы</h2>
+      </div>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">что думают покупатели</div>
+        <h2>Нас хвалят за вкус, сочетания и стабильное качество</h2>
+      </div>
+      <div class="review-stats">
+        <div class="stat"><b>4,9</b><span>рейтинг магазина</span></div>
+        <div class="stat"><b>50 000+</b><span>заказов</span></div>
+        <div class="stat"><b>8 000+</b><span>отзывов</span></div>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+    <div class="wrap reviews-foot">
+      <a href="https://www.ozon.ru/seller/ao-orehprom/" target="_blank" rel="noopener" class="btn btn-outline">Подписаться на магазин</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="logo">ОРЕХПРОМ</div>
+        <p class="tag">Производитель орехов и пищевых ингредиентов для бизнеса с 1998 года</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="/#why">О компании</a>
+        <a href="/#production">Производство</a>
+        <a href="/#audience">B2B</a>
+        <a href="/#offer">Бренды</a>
+        <a href="/#news">Рецепты</a>
+        <a href="/#news">Блог</a>
+      </nav>
+      <div class="footer-contacts">
+        <div><strong>Контакты:</strong></div>
+        <div>8 (861) 212 54 60</div>
+        <div>info@orekh.com</div>
+        <div>350012, г. Краснодар, ул. Красных Партизан, д. 2/4а</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>АО Орехпром © 1998 — 2026. Все права защищены</span>
+      <div class="links">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Договор-оферта для юр. лиц</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const FLAVORS = [
+  {
+    id:'pistachio',
+    tab:'Фисташковая',
+    title:'Фисташковая начинка десертная',
+    desc:'Яркий и насыщенный вкус фисташки в каждой ложке. Отлично подходит для изготовления изысканного дубайского шоколада.',
+    ozon:'https://ozon.ru/t/LCe6NHl',
+    video:'assets/video/pistachio.mp4',
+    poster:'assets/img/pistachio-poster.jpg',
+    jar:'assets/img/pistachio-jar-lg.jpg',
+    dessert:'assets/img/pistachio-dessert-lg.jpg',
+    texture:'assets/img/pistachio-texture-lg.jpg',
+    heroImg:'assets/img/hero/pistachio.png'
+  },
+  {
+    id:'ube',
+    tab:'Убе-виноград',
+    title:'Кондитерская начинка со вкусом Убе-виноград',
+    desc:'Необычный вкус, который запоминается — яркое сочетание азиатского батата убе и сладкого винограда.',
+    ozon:'https://ozon.ru/t/zLynYTW',
+    video:null,
+    jar:'assets/img/ube-jar-lg.jpg',
+    dessert:'assets/img/ube-dessert-lg.jpg',
+    texture:'assets/img/ube-texture-lg.jpg',
+    heroImg:'assets/img/hero/ube.png'
+  },
+  {
+    id:'sakura',
+    tab:'Вишня-Сакура',
+    comingSoon:true,
+    title:'Кондитерская начинка со вкусом Вишня-Сакура',
+    desc:'Японское вдохновение для ваших десертов.',
+    ozon:null,
+    video:null,
+    jar:'assets/img/sakura-jar-lg.jpg',
+    dessert:'assets/img/sakura-dessert-lg.jpg',
+    texture:'assets/img/sakura-texture-lg.jpg',
+    heroImg:'assets/img/hero/sakura.png'
+  },
+  {
+    id:'coconut',
+    tab:'Кокосовая',
+    title:'Кокосово-сливочная десертная начинка',
+    desc:'Нежный и знакомый с детства вкус кокоса и любимого «Рафаэлло».',
+    ozon:'https://ozon.ru/t/zLynpBu',
+    video:'assets/video/coconut.mp4',
+    poster:'assets/img/coconut-poster.jpg',
+    jar:'assets/img/coconut-jar-lg.jpg',
+    dessert:'assets/img/coconut-dessert-lg.jpg',
+    texture:'assets/img/coconut-texture-lg.jpg',
+    heroImg:'assets/img/hero/coconut.png'
+  },
+  {
+    id:'banana',
+    tab:'Банановая',
+    title:'Банановая кондитерская начинка',
+    desc:'Натуральный вкус и яркий тропический аромат спелого банана.',
+    ozon:'https://ozon.ru/t/Ns0SK6C',
+    video:'assets/video/banana.mp4',
+    poster:'assets/img/banana-poster.jpg',
+    jar:'assets/img/banana-jar-lg.jpg',
+    dessert:'assets/img/banana-dessert-lg.jpg',
+    texture:'assets/img/banana-texture-lg.jpg',
+    heroImg:'assets/img/hero/banana.png'
+  },
+  {
+    id:'mango',
+    tab:'Манго-Маракуйя',
+    title:'Кондитерская начинка Манго-Маракуйя',
+    desc:'Создайте своим десертам тропическое настроение.',
+    ozon:'https://ozon.ru/t/3Q7iDzK',
+    video:null,
+    jar:'assets/img/mango-jar-lg.jpg',
+    dessert:'assets/img/mango-dessert-lg.jpg',
+    texture:'assets/img/mango-texture-lg.jpg',
+    heroImg:'assets/img/hero/mango.png'
+  },
+  {
+    id:'dubai',
+    tab:'Фисташка-Фундук',
+    title:'Десертная начинка Фисташка-Фундук в мини-формате',
+    desc:'Два любимых ореха — один насыщенный вкус.',
+    ozon:'https://ozon.ru/t/bTmzsez',
+    video:'assets/video/dubai.mp4',
+    poster:'assets/img/dubai-poster.jpg',
+    jar:'assets/img/dubai-jar-lg.jpg',
+    dessert:'assets/img/dubai-dessert-lg.jpg',
+    texture:'assets/img/dubai-texture-lg.jpg',
+    heroImg:'assets/img/hero/dubai.png'
+  },
+];
+
+const WHY_POINTS = [
+  { t:'Не только для профессионалов', d:'Кофейни, кондитерские, домашние эксперименты — наши продукты одинаково удобны для любого масштаба.' },
+  { t:'Доступность', d:'Благодаря удобному формату упаковки 1 кг можно заказать минимальный объём для разового использования или тестирования определённого вкуса.' },
+  { t:'Доставка в удобный ПВЗ', d:'Быстрая доставка по всей России без поиска дистрибьюторов и долгих согласований.' },
+  { t:'Широкие возможности применения', d:'Идеально для классических рецептов и авторских разработок.' },
+  { t:'Стабильная консистенция', d:'Благодаря равномерной текстуре и пластичности начинок, с ними удобно работать при приготовлении любых десертов.' },
+];
+
+const FAQS = [
+  { q:'Сколько хранится такая паста после вскрытия?', a:'Срок хранения пасты после вскрытия аналогичен сроку годности в закрытом виде, при соблюдении условий хранения, указанных на упаковке.' },
+  { q:'Можно ли хранить пасту в холодильнике?', a:'Можно, но необходимо учитывать, что при комнатной температуре паста имеет пластичную, мажущую текстуру. При понижении температуры масса становится плотнее, что обусловлено природой входящих в состав масел.' },
+  { q:'Подходит ли фисташковая паста для ганаша и крема?', a:'Да, но при использовании для кремов, ганашей, начинок следует учитывать, что температура всех используемых ингредиентов должна быть примерно одинаковой. Если добавить пасту в холодную смесь, из-за своих физ-хим. особенностей, паста станет плотнее и её будет сложнее вмешать в общую массу до однородного состояния. Процент внесения зависит от желаемой насыщенности вкуса и итоговой текстуры — вносить массу следует постепенно. При приготовлении ганашей для смешивания с шоколадом следует нагреть пасту до температуры шоколада.' },
+  { q:'Все ли ингредиенты в вашей продукции натуральные? Можно детям?', a:'Да, все имеющиеся в составе добавки натуральные, включая красители и ароматизаторы. Продукция разрешена детям с 3-х лет при отсутствии индивидуальной непереносимости каких-либо ингредиентов, обозначенных в составе.' },
+  { q:'В составе ваших ореховых паст и начинок используются сырые или обжаренные орехи?', a:'В составе всех паст и начинок бренда используется исключительно обжаренное сырьё. Сначала орех проходит термическую обработку, после чего идёт процесс перетирания в пасту на специальном оборудовании.' },
+];
+
+const REVIEWS = [
+  { n:'Давно работаем на пастах Орехпрома. Паста очень ароматная, вкусная, хорошо окрашивает крем, не сворачивает. Возможность заказать Ваши прекрасные вкусные продукты на маркетплейсах — это просто невероятно чудесно. Спасибо!' },
+  { n:'Паста приехала быстро и хорошо упакована. Вкусная, но не приторно сладкая, не удержалась и сразу взяла ложку! Для десертов и прослоек шоколада — то что надо! Рекомендую, спасибо большое!' },
+  { n:'Паста пришла раньше заявленного времени в прочной картонной коробке, плюс сама баночка была упакована в пупырчатую плёнку. Порадовало то, что она наисвежайшая, произведена неделю назад. Теперь будем радовать своих любимых внуков и детей тортом, вафлями и другими вкусняшками. Всем вкусного лета!' },
+  { n:'Обалденная паста, сделала кокосово-фисташковую шоколадку с жареным тестом катаифи, получилось между дубайским и Рафаэлло, мои муж и сын оценили!' },
+  { n:'Вкуснотища безумная, все свежайшие, упаковка выше всяких похвал, всё пришло целое, однозначно рекомендую и продукт, и продавца!' },
+  { n:'Товар пришёл вовремя, упакован как всегда хорошо. Беру постоянно на постоянной основе для дубайских десертов.' },
+  { n:'Вкусная паста. Взяла для начинки в моти и в меренговый рулет, добавляла в крем. Отвал башки!' },
+  { n:'Паста замечательная, консистенции нежная, паста густая, сахара в меру. Всё в меру. Для дубайского шоколада и начинки для конфет отлично подходит. Спасибо большое за вкусный и полезный продукт. Рекомендую всем!' },
+  { n:'Это самая вкусная паста, которую я пробовала! И не просто вкусная, а ещё и из качественного сырья. Захотелось узнать больше о производителе и была приятно удивлена, что продукция производится на огромном производстве с новейшими технологиями. Вкусная, качественная, безопасная ореховая паста.' },
+  { n:'Прекрасно упакована, свежая и вкусная! Рекомендую!' },
+];
+
+/* ============ HERO JAR COLLAGE ============ */
+/* Scattered arrangement inspired by the referenced e-commerce hero
+   (rogueandrosy): jars at varied sizes/rotations/depths, gently floating. */
+const HERO_LAYOUT = [
+  { id:'pistachio', left:24, top:14, width:44, rot:-4,  z:5, dur:7.2, delay:0    },
+  { id:'dubai',     left:58, top:0,  width:32, rot:7,   z:4, dur:8.1, delay:.5  },
+  { id:'ube',       left:0,  top:4,  width:25, rot:-11, z:3, dur:6.6, delay:1.1 },
+  { id:'coconut',   left:4,  top:54, width:27, rot:6,   z:3, dur:7.6, delay:.3  },
+  { id:'banana',    left:60, top:52, width:29, rot:-7,  z:4, dur:6.9, delay:.8  },
+  { id:'mango',     left:36, top:66, width:23, rot:9,   z:2, dur:8.4, delay:1.4 },
+  { id:'sakura',    left:80, top:32, width:19, rot:-13, z:2, dur:7.0, delay:.2  },
+];
+(function heroCollage(){
+  const root = document.getElementById('heroVisual');
+  const byId = Object.fromEntries(FLAVORS.map(f=>[f.id,f]));
+  HERO_LAYOUT.forEach(pos=>{
+    const f = byId[pos.id];
+    if(!f) return;
+    const jar = document.createElement('div');
+    jar.className = 'hero-jar';
+    jar.style.left = pos.left + '%';
+    jar.style.top = pos.top + '%';
+    jar.style.width = pos.width + '%';
+    jar.style.zIndex = pos.z;
+    jar.style.setProperty('--rot', pos.rot + 'deg');
+    jar.style.setProperty('--dur', pos.dur + 's');
+    jar.style.setProperty('--delay', pos.delay + 's');
+    jar.innerHTML = `<img src="${f.heroImg}" alt="${f.title}" loading="${pos.z>=4?'eager':'lazy'}">`;
+    root.appendChild(jar);
+  });
+})();
+
+/* ============ WHY STICKY-SCROLL ============ */
+(function whyScroll(){
+  const track = document.getElementById('whyTrack');
+  const list = document.getElementById('whyList');
+  const copy = document.getElementById('whyCopy');
+
+  WHY_POINTS.forEach((p,i)=>{
+    const step = document.createElement('div');
+    step.className = 'why-step';
+    step.dataset.index = i;
+    track.appendChild(step);
+
+    const btn = document.createElement('button');
+    btn.innerHTML = `<span class="t">${p.t}</span><span class="d">${p.d}</span>`;
+    btn.addEventListener('click', ()=> step.scrollIntoView({behavior:'smooth', block:'center'}));
+    list.appendChild(btn);
+  });
+
+  function render(i){
+    const p = WHY_POINTS[i];
+    copy.innerHTML = `<div class="idx">0${i+1} / 0${WHY_POINTS.length}</div><h3>${p.t}</h3><p>${p.d}</p>`;
+    [...list.children].forEach((b,bi)=> b.classList.toggle('active', bi===i));
+  }
+  render(0);
+
+  const steps = [...track.children];
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        render(Number(e.target.dataset.index));
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  steps.forEach(s=>io.observe(s));
+})();
+
+/* ============ CATALOG TABS ============ */
+(function catalog(){
+  const tabsEl = document.getElementById('catalogTabs');
+  const panelsEl = document.getElementById('catalogPanels');
+
+  FLAVORS.forEach((f,i)=>{
+    const tab = document.createElement('button');
+    tab.className = i===0 ? 'active':'';
+    tab.innerHTML = f.tab + (f.comingSoon ? '<span class="soon">скоро</span>' : '');
+    tab.addEventListener('click', ()=> select(i));
+    tabsEl.appendChild(tab);
+
+    const panel = document.createElement('div');
+    panel.className = 'flavor-panel' + (i===0 ? ' active':'');
+
+    const srcset = (src) => `${src.replace('-lg.jpg','-sm.jpg')} 560w, ${src} 1100w`;
+    const photoTag = (src, label) => `<img src="${src}" srcset="${srcset(src)}" sizes="(max-width:640px) 50vw, 300px" alt="${f.title} — ${label}" loading="lazy">`;
+
+    // Video (portrait) is primary when present; otherwise the jar photo takes its place.
+    // The remaining photos always form a tile to the right of the primary media.
+    let primaryHTML, sideCells;
+    if(f.video){
+      primaryHTML = `<video src="${f.video}" poster="${f.poster}" autoplay muted loop playsinline></video>`;
+      sideCells = [photoTag(f.jar,'банка'), photoTag(f.texture,'текстура'), photoTag(f.dessert,'в десерте')];
+    } else {
+      primaryHTML = photoTag(f.jar,'банка');
+      sideCells = [photoTag(f.texture,'текстура'), photoTag(f.dessert,'в десерте')];
+    }
+    const galleryHTML = `
+      <div class="fg-primary">${primaryHTML}</div>
+      <div class="fg-side">${sideCells.map(c=>`<div class="cell">${c}</div>`).join('')}</div>
+    `;
+
+    const ctaHTML = f.comingSoon
+      ? `<span class="btn btn-disabled">Скоро в продаже</span><div class="soon-note">Вкус готовится к запуску — следите за обновлениями каталога.</div>`
+      : `<a href="${f.ozon}" target="_blank" rel="noopener" class="btn">Купить на OZON</a>`;
+
+    panel.innerHTML = `
+      <div class="flavor-info">
+        <div class="kicker">ЕМ! · начинка 1 кг</div>
+        <h3>${f.title}</h3>
+        <p>${f.desc}</p>
+        ${ctaHTML}
+      </div>
+      <div class="flavor-gallery">${galleryHTML}</div>
+    `;
+    panelsEl.appendChild(panel);
+  });
+
+  function select(i){
+    [...tabsEl.children].forEach((t,ti)=>t.classList.toggle('active', ti===i));
+    [...panelsEl.children].forEach((p,pi)=>p.classList.toggle('active', pi===i));
+  }
+})();
+
+/* ============ FAQ ============ */
+(function faq(){
+  const list = document.getElementById('faqList');
+  FAQS.forEach(item=>{
+    const el = document.createElement('div');
+    el.className = 'faq-item';
+    el.innerHTML = `
+      <button class="faq-q">
+        <span class="q-text">${item.q}</span>
+        <span class="q-meta">
+          <span class="q-label">Смотреть ответ</span>
+          <span class="q-circle"><svg viewBox="0 0 16 16" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </button>
+      <div class="faq-a"><p>${item.a}</p></div>
+    `;
+    const q = el.querySelector('.faq-q');
+    const a = el.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = el.classList.contains('open');
+      list.querySelectorAll('.faq-item.open').forEach(o=>{
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        el.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+    list.appendChild(el);
+  });
+})();
+
+/* ============ REVIEWS MARQUEE ============ */
+(function reviews(){
+  const track = document.getElementById('marqueeTrack');
+  const build = () => REVIEWS.map(r => `
+    <div class="review-card">
+      <div class="quote-mark">“</div>
+      <p>${r.n}</p>
+    </div>
+  `).join('');
+  track.innerHTML = build() + build(); // duplicate for seamless loop
+})();
+</script>
+</body>
+</html>
